@@ -1,18 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontendonly-service
+  name: frontend-service
   labels:
     app: sdvdemo
 spec:
   ports:
-  - protocol: "TCP"
-   # Port accessible inside cluster
-    port: 8888
-    # Port accessible outside cluster nodePort
-    nodePort: 30002
-     # Port to forward to inside the pod targetpod
-    #targetPort: 8888
+    - port: 8080
   selector:
     app: sdvdemo
     tier: frontend
@@ -21,7 +15,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontendonly-deployment
+  name: frontend-deployment
   labels:
     app: sdvdemo
 spec:
@@ -38,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: markusfelsner/sdvdemo-frontendonly:1.0 #tutum/hello-world
+      - image: markusfelsner/sdvdemo-frontendunddb:1.0 #tutum/hello-world
         name: sdvdemo
-        #ports:
-          #- containerPort: 8888
+        ports:
+          - containerPort: 8080
