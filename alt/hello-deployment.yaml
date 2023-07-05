@@ -6,7 +6,13 @@ metadata:
     app: sdvdemo
 spec:
   ports:
-    - port: 8080
+  - protocol: "TCP"
+   # Port accessible inside cluster
+    port: 8888
+    # Port accessible outside cluster nodePort
+    nodePort: 30001
+     # Port to forward to inside the pod targetpod
+    #targetPort: 8888
   selector:
     app: sdvdemo
     tier: frontend
@@ -32,7 +38,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: markusfelsner/sdvdemo-frontendunddb:1.0 #tutum/hello-world
+      - image: markusfelsner/sdvdemo-kubernetes #tutum/hello-world
         name: sdvdemo
-        ports:
-          - containerPort: 8080
+        #ports:
+          #- containerPort: 8888

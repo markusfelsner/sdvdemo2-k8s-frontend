@@ -59,7 +59,7 @@ func main() {
 	})
 
 	// Starte den HTTP-Server
-	log.Println("Server gestartet, höre auf Port 8080...")
+	log.Println("Server gestartet, höre auf Port 8888...")
 	if err := http.ListenAndServe(":8888", nil); err != nil {
 		log.Fatal(err)
 	}
