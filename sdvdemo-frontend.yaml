@@ -32,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: markusfelsner/sdvdemo-k8s:1.7
+      - image: markusfelsner/sdvdemo-frontend:1.0
         name: sdvdemo
         ports:
           - containerPort: 8888
