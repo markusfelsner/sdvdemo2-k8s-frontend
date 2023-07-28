@@ -19,6 +19,7 @@ metadata:
   labels:
     app: sdvdemo
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: sdvdemo
